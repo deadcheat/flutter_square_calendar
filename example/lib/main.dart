@@ -74,8 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
       body: new Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: 
-            new SquareCalendar(year: 2018, month: 2, day: 1,),
+        child:
+            /**
+             * Basical Use
+             */
+            new SquareCalendar(year: 2018, month: 2),
+        /**
+             * If you design how build GridTiles,
+             * set function(Datetime date, Datetime baseDate) to tileBuilder 
+             */
+        // new SquareCalendar(
+        //   year: 2018,
+        //   month: 2,
+        //   tileBuilder: (date, basedate) {
+        //     return new GridTile(child: new Text(date.day.toString()));
+        //   },
+        // ),
       ),
     );
   }
