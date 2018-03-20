@@ -2,17 +2,16 @@
 
 A widget plugin for showing calendar.
 
-%%% NOTIFICATION %%%
-In this version, you can only show calendar yet.
-
 ## Getting Started
 
+### import
 ```
 import 'package:square_calendar/square_calendar.dart';
 ```
 
+### just show calendar
 ```
-new SquareCalendar(year: 2018, month: 2, day: 1,),
+new SquareCalendar(year: 2018, month: 2),
 ```
 
 ## images
