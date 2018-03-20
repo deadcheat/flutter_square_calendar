@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
+import 'package:square_calendar/src/calendar_gridtile_builder.dart';
+
 const int _FirstDate = 1;
 const int _ADayBeforeFirstDay = 0;
 const int _WeekDaysCount = 7;
@@ -13,11 +15,17 @@ class SquareCalendar extends StatefulWidget {
     Key key,
     @required this.year,
     @required this.month,
-    @required this.day,
+    this.day: _FirstDate,
+    this.revealBaseDay: false,
     this.mainAxisSpacing: _DefaultMainAxisSpacing,
     this.crossAxissSpacing: _DefaultCrossAxisSpacing,
     this.padding: _DefaultPadding,
+    this.tileBuilder: const DefaultCalendarGridTileBuilder(),
   }): super(key: key);
+
+  final bool revealBaseDay;
+
+  final CalendarGridTileBuilder tileBuilder;
 
   final int year;
   final int month;
@@ -63,28 +71,13 @@ class _SquareCalendarState extends State<SquareCalendar> {
             );
     }).toList();
     final baseDay = new DateTime(widget.year, widget.month, widget.day);
-    final lastday = new DateTime(baseDay.year, baseDay.month+1, _ADayBeforeFirstDay);
-    final firstday = new DateTime(baseDay.year, baseDay.month,_FirstDate);
+    final firstdayOfMonth = new DateTime(baseDay.year, baseDay.month,_FirstDate);
     final calendarDates = new List.generate(35, (i) => 
-      new DateTime(firstday.year, firstday.month, firstday.day + (i-firstday.weekday))
+      new DateTime(firstdayOfMonth.year, firstdayOfMonth.month, firstdayOfMonth.day + (i-firstdayOfMonth.weekday))
     );
     final calendar = new List.generate(35, (i) =>i).map((int i) {
-      var textStyle = new TextStyle(fontWeight: FontWeight.bold);
       final date = calendarDates[i];
-      switch (date.weekday) {
-        case 7:
-          textStyle = textStyle.apply(color: Colors.red);
-          break;
-        case 6:
-          textStyle = textStyle.apply(color: Colors.blue);
-          break;
-        default:
-      }
-      if (date.month != baseDay.month) {
-        textStyle = textStyle.apply(color: Colors.grey);
-      }
-      return new GridTile(
-      child: new Text(calendarDates[i].day.toString(), style: textStyle, textAlign: TextAlign.center,));
+      return widget.tileBuilder(date, baseDay);
     }).toList();
     headers.addAll(calendar);
     return headers;

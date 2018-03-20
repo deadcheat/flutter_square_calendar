@@ -1,6 +1,9 @@
-# flutter_square_calendar
+# square_calendar
 
 A widget plugin for showing calendar.
+
+%%% NOTIFICATION %%%
+In this version, you can only show calendar yet.
 
 ## Getting Started
 
