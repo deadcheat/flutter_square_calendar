@@ -1,0 +1,11 @@
+name: flutter_square_calendar
+description: A widget plugin for showing calendar.
+
+author: deadcheat
+homepage: https://github.com/deadcheat/flutter_square_calendar
+
+version: 0.0.1
+
+dependencies:
+  flutter:
+    sdk: flutter
