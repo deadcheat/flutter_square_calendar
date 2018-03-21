@@ -13,3 +13,4 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  meta: "^1.1.2"
