@@ -16,6 +16,7 @@ class SquareCalendar extends StatefulWidget {
     Key key,
     @required this.year,
     @required this.month,
+    this.hasHeader = true,
     this.day: _FirstDate,
     this.mainAxisSpacing: _DefaultMainAxisSpacing,
     this.crossAxissSpacing: _DefaultCrossAxisSpacing,
@@ -33,6 +34,8 @@ class SquareCalendar extends StatefulWidget {
   final int year;
   final int month;
   final int day;
+
+  final bool hasHeader;
 
   final double mainAxisSpacing;
   final double crossAxissSpacing;
@@ -58,27 +61,31 @@ class _SquareCalendarState extends State<SquareCalendar> {
 
   List<Widget> _buildDaysGridTiles(BuildContext context) {
     final weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    final headers = new List.generate(7, (i) => i).map((int i) {
-      var textStyle = new TextStyle(fontWeight: FontWeight.bold);
-      switch (i) {
-        case 0:
-          textStyle = textStyle.apply(color: Colors.red);
-          break;
-        case 6:
-          textStyle = textStyle.apply(color: Colors.blue);
-          break;
-        default:
-      }
-      return new GestureDetector(
-        child: new GridTile(
-          child: new Text(
-            weekDays[i],
-            style: textStyle,
-            textAlign: TextAlign.center,
+    final calendar = [];
+    if (widget.hasHeader) {
+      calendar.addAll(new List.generate(7, (i) => i).map((int i) {
+        var textStyle = new TextStyle(fontWeight: FontWeight.bold);
+        switch (i) {
+          case 0:
+            textStyle = textStyle.apply(color: Colors.red);
+            break;
+          case 6:
+            textStyle = textStyle.apply(color: Colors.blue);
+            break;
+          default:
+        }
+        return new GestureDetector(
+          child: new GridTile(
+            child: new Text(
+              weekDays[i],
+              style: textStyle,
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
-      );
-    }).toList();
+        );
+      }).toList());
+    }
+
     final baseDay = new DateTime(widget.year, widget.month, widget.day);
     final firstDayOfMonth =
         new DateTime(baseDay.year, baseDay.month, _FirstDate);
@@ -87,7 +94,7 @@ class _SquareCalendarState extends State<SquareCalendar> {
         35,
         (i) => new DateTime(firstDayOfMonth.year, firstDayOfMonth.month,
             firstDayOfMonth.day + (i - firstDayOfMonth.weekday)));
-    final calendar = new List.generate(35, (i) => i).map((int i) {
+    final days = new List.generate(35, (i) => i).map((int i) {
       final date = calendarDates[i];
       // return widget.tileBuilder(date, baseDate: baseDay);
       return widget.gestureBuilder(
@@ -106,7 +113,7 @@ class _SquareCalendarState extends State<SquareCalendar> {
         lastDayOfMonth,
       );
     }).toList();
-    headers.addAll(calendar);
-    return headers;
+    calendar.addAll(days);
+    return calendar;
   }
 }
