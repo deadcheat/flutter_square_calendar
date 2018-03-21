@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
 typedef GestureDetector CalendarGridGestureDetectorBuilder(
-  GridTile child, {
+  GridTile child,
   int index,
+  DateTime date,
   DateTime baseDate,
-  DateTime firstDayOfMonth,
-  DateTime lastDayOfMonth,
-});
+  DateTime firstDateOfMonth,
+  DateTime lastDateOfMonth,
+);
 
 class DefaultCalendarGridGestureDetectorBuilder {
   const DefaultCalendarGridGestureDetectorBuilder();
   GestureDetector call(
-    GridTile child, {
+    GridTile child,
     int index,
+    DateTime date,
     DateTime baseDate,
-    DateTime firstDayOfMonth,
-    DateTime lastDayOfMonth,
-  }) {
+    DateTime firstDateOfMonth,
+    DateTime lastDateOfMonth,
+  ) {
     return new GestureDetector(
       child: child,
     );

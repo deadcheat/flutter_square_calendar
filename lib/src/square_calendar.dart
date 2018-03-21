@@ -91,15 +91,12 @@ class _SquareCalendarState extends State<SquareCalendar> {
       final date = calendarDates[i];
       // return widget.tileBuilder(date, baseDate: baseDay);
       return widget.gestureBuilder(
-        widget.tileBuilder(date,
-            index: i,
-            baseDate: baseDay,
-            firstDayOfMonth: firstDayOfMonth,
-            lastDayOfMonth: lastDayOfMonth),
-        index: i,
-        baseDate: baseDay,
-        firstDayOfMonth: firstDayOfMonth,
-        lastDayOfMonth: lastDayOfMonth,
+        widget.tileBuilder(date, i, baseDay, firstDayOfMonth, lastDayOfMonth),
+        i,
+        date,
+        baseDay,
+        firstDayOfMonth,
+        lastDayOfMonth,
       );
     }).toList();
     headers.addAll(calendar);

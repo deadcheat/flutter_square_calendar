@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 
 typedef GridTile CalendarGridTileBuilder(
-  DateTime date, {
+  DateTime date,
   int index,
   DateTime baseDate,
   DateTime firstDayOfMonth,
   DateTime lastDayOfMonth,
-});
+);
 
 /// DefaultCalendarGridTileBuilder
 /// default implementation for CalendarGridTileBuilder
 class DefaultCalendarGridTileBuilder {
   const DefaultCalendarGridTileBuilder();
   GridTile call(
-    DateTime date, {
+    DateTime date,
     int index,
     DateTime baseDate,
     DateTime firstDayOfMonth,
     DateTime lastDayOfMonth,
-  }) {
+  ) {
     var textStyle = new TextStyle(fontWeight: FontWeight.bold);
     if (baseDate != null && date.month != baseDate.month) {
       textStyle = textStyle.apply(color: Colors.grey);
