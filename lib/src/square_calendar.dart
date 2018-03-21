@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 
 import 'package:square_calendar/src/calendar_gridtile_builder.dart';
 import 'package:square_calendar/src/calendar_gesture_builder.dart';
+import 'package:square_calendar/src/calendar_widget_builder.dart';
 
 const int _FirstDate = 1;
 const int _WeekDaysCount = 7;
@@ -16,19 +17,18 @@ class SquareCalendar extends StatefulWidget {
     @required this.year,
     @required this.month,
     this.day: _FirstDate,
-    this.revealBaseDay: false,
     this.mainAxisSpacing: _DefaultMainAxisSpacing,
     this.crossAxissSpacing: _DefaultCrossAxisSpacing,
     this.padding: _DefaultPadding,
-    this.tileBuilder: const DefaultCalendarGridTileBuilder(),
     this.gestureBuilder: const DefaultCalendarGridGestureDetectorBuilder(),
+    this.tileBuilder: const DefaultCalendarGridTileBuilder(),
+    this.widgetBuilder: const DefaultCalendarWidgetBuilder(),
   })
       : super(key: key);
 
-  final bool revealBaseDay;
-
   final CalendarGridTileBuilder tileBuilder;
   final CalendarGridGestureDetectorBuilder gestureBuilder;
+  final CalendarWidgetBuilder widgetBuilder;
 
   final int year;
   final int month;
@@ -91,7 +91,14 @@ class _SquareCalendarState extends State<SquareCalendar> {
       final date = calendarDates[i];
       // return widget.tileBuilder(date, baseDate: baseDay);
       return widget.gestureBuilder(
-        widget.tileBuilder(date, i, baseDay, firstDayOfMonth, lastDayOfMonth),
+        widget.tileBuilder(
+            widget.widgetBuilder(
+                i, date, baseDay, firstDayOfMonth, lastDayOfMonth),
+            i,
+            date,
+            baseDay,
+            firstDayOfMonth,
+            lastDayOfMonth),
         i,
         date,
         baseDay,

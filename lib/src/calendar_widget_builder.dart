@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef GridTile CalendarGridTileBuilder(
-  Widget child,
+typedef Widget CalendarWidgetBuilder(
   int index,
   DateTime date,
   DateTime baseDate,
@@ -9,12 +8,9 @@ typedef GridTile CalendarGridTileBuilder(
   DateTime lastDayOfMonth,
 );
 
-/// DefaultCalendarGridTileBuilder
-/// default implementation for CalendarGridTileBuilder
-class DefaultCalendarGridTileBuilder {
-  const DefaultCalendarGridTileBuilder();
-  GridTile call(
-    Widget child,
+class DefaultCalendarWidgetBuilder {
+  const DefaultCalendarWidgetBuilder();
+  Widget call(
     int index,
     DateTime date,
     DateTime baseDate,
@@ -35,8 +31,10 @@ class DefaultCalendarGridTileBuilder {
         default:
       }
     }
-    return new GridTile(
-      child: child,
+    return new Text(
+      date.day.toString(),
+      style: textStyle,
+      textAlign: TextAlign.center,
     );
   }
 }
