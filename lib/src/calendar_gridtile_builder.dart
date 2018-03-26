@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-typedef GridTile CalendarGridTileBuilder(
+typedef Widget CalendarGridTileBuilder(
   Widget child,
   int index,
   DateTime date,
@@ -13,7 +13,7 @@ typedef GridTile CalendarGridTileBuilder(
 /// default implementation for CalendarGridTileBuilder
 class DefaultCalendarGridTileBuilder {
   const DefaultCalendarGridTileBuilder();
-  GridTile call(
+  Widget call(
     Widget child,
     int index,
     DateTime date,
