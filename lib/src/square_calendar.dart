@@ -86,15 +86,14 @@ class _SquareCalendarState extends State<SquareCalendar> {
     final baseDay = new DateTime(widget.year, widget.month, widget.day);
     final firstDayOfMonth =
         new DateTime(baseDay.year, baseDay.month, _FirstDate);
-    final lastDayOfMonth = new DateTime(baseDay.year, baseDay.month, 0);
+    final lastDayOfMonth = new DateTime(baseDay.year, baseDay.month + 1, 0);
 
     var coefficient = firstDayOfMonth.weekday;
     if (coefficient == 7) {
       coefficient = 0;
     }
     var rowNum = 35;
-    if (lastDayOfMonth.day > 29 && firstDayOfMonth.weekday == 5 ||
-        firstDayOfMonth.weekday == 6) {
+    if ((coefficient + lastDayOfMonth.day) > 35) {
       rowNum = 42;
     }
     final calendarDates = new List.generate(
