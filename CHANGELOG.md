@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.0.9] - 2018-03-28
+### Changed
+- Fixed a bug unnecessary row has displayed when start from sunday
+
 ## [0.0.8] - 2018-03-28
 ### Changed and deleted
 - To make builders to be undisputed, made builder to be a widget builder or a nested widget builder, and deletede gesture builder and rowtile builder.
