@@ -8,6 +8,49 @@ typedef Widget CalendarWidgetBuilder(
   DateTime lastDayOfMonth,
 );
 
+typedef Widget CalendarNestedWidgetBuilder(
+  Widget child,
+  int index,
+  DateTime date,
+  DateTime baseDate,
+  DateTime firstDayOfMonth,
+  DateTime lastDayOfMonth,
+);
+
+class DefaultCalendarGridGestureDetectorBuilder {
+  const DefaultCalendarGridGestureDetectorBuilder();
+  Widget call(
+    Widget child,
+    int index,
+    DateTime date,
+    DateTime baseDate,
+    DateTime firstDateOfMonth,
+    DateTime lastDateOfMonth,
+  ) {
+    return new GestureDetector(
+      child: child,
+    );
+  }
+}
+
+/// DefaultCalendarGridTileBuilder
+/// default implementation for CalendarGridTileBuilder
+class DefaultCalendarGridTileBuilder {
+  const DefaultCalendarGridTileBuilder();
+  Widget call(
+    Widget child,
+    int index,
+    DateTime date,
+    DateTime baseDate,
+    DateTime firstDayOfMonth,
+    DateTime lastDayOfMonth,
+  ) {
+    return new GridTile(
+      child: child,
+    );
+  }
+}
+
 class DefaultCalendarWidgetBuilder {
   const DefaultCalendarWidgetBuilder();
   Widget call(

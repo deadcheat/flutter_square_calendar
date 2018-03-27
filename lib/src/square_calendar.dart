@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import 'package:square_calendar/src/calendar_gridtile_builder.dart';
-import 'package:square_calendar/src/calendar_gesture_builder.dart';
 import 'package:square_calendar/src/calendar_widget_builder.dart';
 
 const int _FirstDate = 1;
@@ -27,8 +25,8 @@ class SquareCalendar extends StatefulWidget {
   })
       : super(key: key);
 
-  final CalendarGridTileBuilder tileBuilder;
-  final CalendarGridGestureDetectorBuilder gestureBuilder;
+  final CalendarNestedWidgetBuilder tileBuilder;
+  final CalendarNestedWidgetBuilder gestureBuilder;
   final CalendarWidgetBuilder widgetBuilder;
 
   final int year;
