@@ -4,11 +4,11 @@ description: A widget plugin for showing calendar.
 author: deadcheat <app.deadcheat@gmail.com>
 homepage: https://github.com/deadcheat/flutter_square_calendar
 
-version: 0.1.0
+version: 0.1.1
 
 environment:
   sdk: ">=1.19.0 <2.0.0"
-  flutter: "^0.1.2"
+  flutter: "^0.2.3"
 
 dependencies:
   flutter:
