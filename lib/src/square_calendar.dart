@@ -22,8 +22,7 @@ class SquareCalendar extends StatefulWidget {
     this.gestureBuilder: const DefaultCalendarGridGestureDetectorBuilder(),
     this.tileBuilder: const DefaultCalendarGridTileBuilder(),
     this.widgetBuilder: const DefaultCalendarWidgetBuilder(),
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   final CalendarNestedWidgetBuilder tileBuilder;
   final CalendarNestedWidgetBuilder gestureBuilder;
