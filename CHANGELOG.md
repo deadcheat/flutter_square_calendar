@@ -1,8 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+## [0.1.5] - 2020-10-29
+### Changed
+- fixed codes for updating sdk version
+
+## [0.1.4] - 2018-11-08
+### Changed
+- added example
+
+## [0.1.3] - 2018-11-07
+### Changed
+- fixed some codes by suggestion
 
 ## [0.1.2] - 2018-09-01
 ### Changed

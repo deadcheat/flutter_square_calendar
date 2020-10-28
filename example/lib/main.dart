@@ -88,24 +88,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 new SquareCalendar(
               year: 2016,
               month: 4,
-              gestureBuilder: (child, int, date, base, first, last) {
+              gestureBuilder: (child, int, date, baseDate, firstDayOfMonth,
+                  lastDayOfMonth) {
                 return new InkWell(
                   child: child,
                   onTap: () {
                     Scaffold.of(context).showSnackBar(new SnackBar(
-                          content: new Text("tapped: " + date.toString()),
-                        ));
+                      content: new Text("tapped: " + date.toString()),
+                    ));
                   },
                 );
               },
-              tileBuilder: (child, index, date, baseDate, firstDayOfMonth,
-                  lastDayOfMonth) {
-                return new GridTile(child: child);
-              },
-              widgetBuilder:
-                  (index, date, baseDate, firstDayOfMonth, lastDayOfMonth) {
-                return new Text(date.day.toString());
-              },
+              // tileBuilder: (child, index, date, baseDate, firstDayOfMonth,
+              //     lastDayOfMonth) {
+              //   return new GridTile(child: child);
+              // },
+              // widgetBuilder:
+              //     (index, date, baseDate, firstDayOfMonth, lastDayOfMonth) {
+              //   return new Text(date.day.toString());
+              // },
             ),
           );
         },

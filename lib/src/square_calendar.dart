@@ -19,9 +19,9 @@ class SquareCalendar extends StatefulWidget {
     this.mainAxisSpacing: _DefaultMainAxisSpacing,
     this.crossAxissSpacing: _DefaultCrossAxisSpacing,
     this.padding: _DefaultPadding,
-    this.gestureBuilder: const DefaultCalendarGridGestureDetectorBuilder(),
-    this.tileBuilder: const DefaultCalendarGridTileBuilder(),
-    this.widgetBuilder: const DefaultCalendarWidgetBuilder(),
+    this.gestureBuilder,
+    this.tileBuilder,
+    this.widgetBuilder,
   }) : super(key: key);
 
   final CalendarNestedWidgetBuilder tileBuilder;
@@ -58,7 +58,7 @@ class _SquareCalendarState extends State<SquareCalendar> {
 
   List<Widget> _buildDaysGridTiles(BuildContext context) {
     final weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    final calendar = [];
+    final List<Widget> calendar = [];
     if (widget.hasHeader) {
       calendar.addAll(new List.generate(7, (i) => i).map((int i) {
         var textStyle = new TextStyle(fontWeight: FontWeight.bold);
@@ -82,6 +82,16 @@ class _SquareCalendarState extends State<SquareCalendar> {
         );
       }).toList());
     }
+    final CalendarNestedWidgetBuilder tileBuilder = widget.tileBuilder != null
+        ? widget.tileBuilder
+        : defaultCalendarGridTileBuilder;
+    final CalendarNestedWidgetBuilder gestureBuilder =
+        widget.gestureBuilder != null
+            ? widget.gestureBuilder
+            : defaultCalendarGridGestureDetectorBuilder;
+    final CalendarWidgetBuilder widgetBuilder = widget.widgetBuilder != null
+        ? widget.widgetBuilder
+        : defaultCalendarWidgetBuilder;
     final baseDay = new DateTime(widget.year, widget.month, widget.day);
     final firstDayOfMonth =
         new DateTime(baseDay.year, baseDay.month, _FirstDate);
@@ -99,13 +109,11 @@ class _SquareCalendarState extends State<SquareCalendar> {
         rowNum,
         (i) => new DateTime(firstDayOfMonth.year, firstDayOfMonth.month,
             firstDayOfMonth.day + (i - coefficient)));
-    final days = new List.generate(rowNum, (i) => i).map((int i) {
+    final List<Widget> days = new List.generate(rowNum, (i) => i).map((int i) {
       final date = calendarDates[i];
-      // return widget.tileBuilder(date, baseDate: baseDay);
-      return widget.gestureBuilder(
-        widget.tileBuilder(
-            widget.widgetBuilder(
-                i, date, baseDay, firstDayOfMonth, lastDayOfMonth),
+      return gestureBuilder(
+        tileBuilder(
+            widgetBuilder(i, date, baseDay, firstDayOfMonth, lastDayOfMonth),
             i,
             date,
             baseDay,
