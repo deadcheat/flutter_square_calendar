@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meta/meta.dart';
 
 import 'package:square_calendar/src/calendar_widget_builder.dart';
 
